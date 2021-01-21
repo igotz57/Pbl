@@ -82,10 +82,10 @@ int main()
     //abiadura finala
     for (x = 0; x < filas; x++) {
         v_end = v_end + denbora_tarte * mat[x][ardatza];
-        printf("DEBUG V_END______________%lf\n", v_end);
         if (v_end > v_max) {
             v_max = v_end;
         }
+        printf("DEBUG V_END______________%lf\n", v_end);
     }
 
     printf("Abiadura finala: %lf m/s", v_end);
