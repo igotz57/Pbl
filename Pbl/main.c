@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-float abiadura_final(int array[][1], int filak, float denbora);
-void abiadura_maximoa(int array[][1], int filak, float denbora);
-void azelerazio_maximoa(int array[][1], int filak, float denbora);
+float abiadura_final(float array[200][5], int filak, float denbora);
+void abiadura_maximoa(float array[200][5], int filak, float denbora);
+void azelerazio_maximoa(float array[200][5], int filak, float denbora);
 
 // Este programa lee los valores float de un archivo ".csv" que este en la misma carpeta del ".c", los mete a una matriz y enseña la matriz por la consola.
 
@@ -15,7 +15,7 @@ int main()
     char buffer[1024];
     char* record, * line;
     int filas = 0, columnas = 0, x = 0, y = 0;
-    float mat[200][200];
+    float mat[200][5];
     float v_end = 0;
     float fr = 0;
     float denbora_tarte = 0;
@@ -104,7 +104,7 @@ int main()
 }
 
 
-float abiadura_final(int array[][1], int filak, float denbora) {
+float abiadura_final(float array[200][5], int filak, float denbora) {
     float v_buk = 0;
     int x = 0;
 
@@ -113,13 +113,20 @@ float abiadura_final(int array[][1], int filak, float denbora) {
     }
     return v_buk;
 }
-void abiadura_maximoa(int array[][1], int filak, float denbora, int ardatza) {
+void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza) {
     float v_max = 0;
     int x = 0;
+    int y = 0;
     float v_buk = 0;
     float tiempo = 0;
     float t_max = 0;
-
+    for (x = 0; x < filak; x++) {
+            for (y = 0; y < 2; y++) {
+                printf("%f ", array[x][y]);
+            }
+            printf("\n");
+    }
+    printf("\n\n\n\n");
     for (x = 0; x < filak; x++) {
         v_buk = v_buk + (denbora * array[x][ardatza]);
         tiempo = tiempo + denbora;
@@ -131,7 +138,7 @@ void abiadura_maximoa(int array[][1], int filak, float denbora, int ardatza) {
 
     printf("Abiadura maximoa %f m/s da eta %f segunduan gertatzen da.\n", v_max, t_max);
 }
-void azelerazio_maximoa(int array[][1], int filak, float denbora, int ardatza) {
+void azelerazio_maximoa(float array[200][5], int filak, float denbora, int ardatza) {
     float a_max = 0;
     int x = 0;
     float tiempo = 0;
