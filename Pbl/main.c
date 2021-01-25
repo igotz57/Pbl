@@ -122,13 +122,6 @@ void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza
     float tiempo = 0;
     float t_max = 0;
     for (x = 0; x < filak; x++) {
-            for (y = 0; y < 2; y++) {
-                printf("%f ", array[x][y]);
-            }
-            printf("\n");
-    }
-    printf("\n\n\n\n");
-    for (x = 0; x < filak; x++) {
         v_buk = v_buk + (denbora * array[x][ardatza]);
         tiempo = tiempo + denbora;
         if (v_buk > v_max) {
