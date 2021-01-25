@@ -103,7 +103,7 @@ int main()
     return 0;
 }
 
-
+//Abiadura finala lortzeko
 float abiadura_final(float array[200][5], int filak, float denbora) {
     float v_buk = 0;
     int x = 0;
@@ -113,6 +113,7 @@ float abiadura_final(float array[200][5], int filak, float denbora) {
     }
     return v_buk;
 }
+//Abiadura maximoa lortzeko
 void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza) {
     float v_max = 0;
     int x = 0;
@@ -138,6 +139,7 @@ void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza
 
     printf("Abiadura maximoa %f m/s da eta %f segunduan gertatzen da.\n", v_max, t_max);
 }
+//Azelerazio maximoa lortzeko
 void azelerazio_maximoa(float array[200][5], int filak, float denbora, int ardatza) {
     float a_max = 0;
     int x = 0;
