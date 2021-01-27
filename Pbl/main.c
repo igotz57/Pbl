@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-float abiadura_final(float array[200][5], int filak, float denbora);
-void abiadura_maximoa(float array[200][5], int filak, float denbora);
-void azelerazio_maximoa(float array[200][5], int filak, float denbora);
+float abiadura_final(float array[200][5], int filak, float denbora, int ardatza);
+void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza);
+void azelerazio_maximoa(float array[200][5], int filak, float denbora, int ardatza);
 
 // Este programa lee los valores float de un archivo ".csv" que este en la misma carpeta del ".c", los mete a una matriz y enseña la matriz por la consola.
 
@@ -52,14 +52,14 @@ int main()
         return -1;
     }
 
-    //DENBORA-TARTEA
+    //DENBORA-TARTEA (Frekuentziaren alderantzizkoa)
     printf("Sartu sentsorearen muestreo frekuentzia Hz-tan: ");
     fgets(str, 100, stdin);
     sscanf(str, "%f", &fr);
     denbora_tarte = 1 / fr;
     printf("\n");
 
-    //Ardatzak
+    //Ardatzak (Hainbat daturen artean aukeratzeko)
     printf("Aukeratu X edo Y ardatza(1 edo 2): ");
     fgets(str, 100, stdin);
     sscanf(str, "%i", &ardatza);
@@ -72,7 +72,7 @@ int main()
         ardatza = 1;
     }
 
-    //MENUA
+    //MENUA (DAtu ezberdinak lortu hauetatik bat aukeratu)
     printf(" Hurrengo aukeretatik jakin nahi duzun datuaren zenbakia idatzi:\n");
     printf(" 1 - Bukaerako abiadura\n");
     printf(" 2 - Abiadura maximoa eta zein unean den\n");
@@ -103,13 +103,13 @@ int main()
     return 0;
 }
 
-//Abiadura finala lortzeko
-float abiadura_final(float array[200][5], int filak, float denbora) {
+//Abiadura finala lortzeko (Azkeneko abiadura bueltan eman)
+float abiadura_final(float array[200][5], int filak, float denbora, int ardatza) {
     float v_buk = 0;
     int x = 0;
 
     for (x = 0; x < filak; x++) {
-        v_buk = v_buk + denbora * array[x][1];
+        v_buk = v_buk + denbora * array[x][ardatza];
     }
     return v_buk;
 }
@@ -121,10 +121,10 @@ void abiadura_maximoa(float array[200][5], int filak, float denbora, int ardatza
     float v_buk = 0;
     float tiempo = 0;
     float t_max = 0;
-    for (x = 0; x < filak; x++) {
+    for (x = 0; x < filak; x++) {                       //Banan-banaka datuak irakurri aukeratutako ardatzean
         v_buk = v_buk + (denbora * array[x][ardatza]);
         tiempo = tiempo + denbora;
-        if (v_buk > v_max) {
+        if (v_buk > v_max) {                //Abiadura handiagoa bada, abiadura maximoa moduan gorde
             v_max = v_buk;
             t_max = tiempo;
         }
@@ -141,7 +141,7 @@ void azelerazio_maximoa(float array[200][5], int filak, float denbora, int ardat
 
     for (x = 0; x < filak; x++) {
         tiempo = tiempo + denbora;
-        if (array[x][1] > a_max) {
+        if (array[x][1] > a_max) {                //Azelerazioa handiagoa bada, abiadura maximoa moduan gorde
             a_max = array[x][ardatza];
             t_max = tiempo;
         }
